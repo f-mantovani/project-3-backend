@@ -1,4 +1,4 @@
-const validateSignup = ( name, email, password ) => {
+const validateSignup = (name, email, password) => {
   if(!name || !email || !password) {
     const error = new Error
     error.status = 400
@@ -7,7 +7,7 @@ const validateSignup = ( name, email, password ) => {
   }
   return
 }
-const verifyCredentials = ( credential, status,message) => {
+const verifyCredentials = (credential, status, message) => {
   if(credential) {
     const error = new Error
     error.status = status
