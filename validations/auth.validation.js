@@ -7,14 +7,14 @@ const validateSignup = ( name, email, password ) => {
   }
   return
 }
-const checkingUserExistence = ( user ) => {
-  if(user) {
+const verifyCredentials = ( credential, status,message) => {
+  if(credential) {
     const error = new Error
-    error.status = 400
-    error.message = "User already exists"
+    error.status = status
+    error.message = message
     throw error
   }
   return
 }
 
-module.exports = { validateSignup, checkingUserExistence}
+module.exports = { validateSignup, verifyCredentials }
