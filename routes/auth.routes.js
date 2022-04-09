@@ -35,11 +35,8 @@ router.post('/login', async ( req, res) => {
   try {
     const userFromDB = await User.findOne({ email })
     verifyCredentials(!userFromDB, 401, "Email or password incorrect")
-    console.log("passou da primeira verificaçõ de credenciais")
     const comparePassword = await bcrypt.compare(password, userFromDB.passwordHash)
-    console.log(comparePassword)
     verifyCredentials(!comparePassword, 401, "Email or password incorrect")
-    console.log("passou da segunda verificaçõ de credenciais")
     const payload = { email, name: userFromDB.name, userId: userFromDB._id}
     const token = jwt.sign(payload, process.env.SECRET_JWT, { expiresIn: '1day'})
     res.status(200).json({token})
