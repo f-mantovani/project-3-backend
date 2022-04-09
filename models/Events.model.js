@@ -15,6 +15,9 @@ const eventSchema = new Schema ({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    is_past: {
+        type: Boolean,
     }
 })
 
