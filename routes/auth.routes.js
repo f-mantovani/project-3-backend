@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { Router } = require('express')
-const { validateSignup, verifyCredentials } = require('../validations/auth.validation.js')
+const { validateUserInputs } = require('../validations/validateUserInputs.js')
+const { verifyCredentials } = require('../validations/verifyCredentials')
 const User = require('../models/User.model.js')
 
 const router = Router()
@@ -10,7 +11,7 @@ const router = Router()
 router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body
   try {
-    validateSignup(name, email, password)
+    validateUserInputs(name, email, password)
     const userFromDB = await User.findOne({ email })
     verifyCredentials(userFromDB, 400, "User already exists")
     const salt = await bcrypt.genSalt(12)
@@ -33,13 +34,14 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { email, password } = req.body
   try {
+    validateUserInputs(email, password)
     const userFromDB = await User.findOne({ email })
     verifyCredentials(!userFromDB, 401, "Email or password incorrect")
     const comparePassword = await bcrypt.compare(password, userFromDB.passwordHash)
     verifyCredentials(!comparePassword, 401, "Email or password incorrect")
     const payload = { email, name: userFromDB.name, userId: userFromDB._id}
     const token = jwt.sign(payload, process.env.SECRET_JWT, { expiresIn: '1day'})
-    res.status(200).json({token})
+    res.status(200).json({ token })
   } catch (error) {
     res.status(error.status || 500).json({ place: "Error on login", error: error.message})
   }
