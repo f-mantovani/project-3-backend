@@ -52,7 +52,7 @@ router.put('/:taskId', async (req, res) => {
   }
 })
 
-router.delete('/:taskId', async (req, res) => {
+router.delete('/deleteOne/:taskId', async (req, res) => {
   const { userId } = req.user
 
   const { taskId } = req.params
@@ -62,19 +62,25 @@ router.delete('/:taskId', async (req, res) => {
 
     const user = await User.findByIdAndUpdate(userId, { $pull: { taskId }})
 
-    res.status(200).json(user)
+    res.status(204).json()
 
   } catch (error) {
     res.status(500).json({ place: "Error trying delete a task", error: error.message})
   }
 })
 
-router.delete('/', async (req, res) => {
+router.delete('/deleteAll', async (req, res) => {
   const { userId } = req.user
   try {
-    // const user = await User.findByIdAndUpdate(userId, { $unset: { tasks }})
+    const deleteAll = await Task.deleteMany({ user: userId })
+
+    const user = await User.findByIdAndUpdate(userId, { $unset: { tasks:"" }})
+
+    res.status(204).json()
+
   } catch (error) {
-    
+
+    res.status(500).json({ place: "Error trying delete all tasks", error: error.message })
   }
 })
 
