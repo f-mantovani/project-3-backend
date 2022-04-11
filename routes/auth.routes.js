@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
 
     const payload = { email, name: userFromDB.name, userId: userFromDB._id}
 
-    const token = jwt.sign(payload, process.env.SECRET_JWT, { expiresIn: '1day'})
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1day'})
 
     res.status(200).json({ token })
 
