@@ -7,7 +7,7 @@ const auth = (req, res, next) => {
 
         const bearer = req.get('Authorization')
 
-        verifyCredentials(!bearer, 404, "Access denied - unauthorized user")
+        verifyCredentials(!bearer, 401, "Access denied - unauthorized user")
 
         const token = bearer.split(' ')[1]
 
