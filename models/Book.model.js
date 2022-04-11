@@ -8,7 +8,11 @@ const bookSchema = new Schema(
     author: {
       type: String
     },
-    userId: [{
+    userId: {
+      Schema.Types.ObjectId, 
+      ref:'User'
+    },
+    favoritedByUsers: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
     }]
