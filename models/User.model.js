@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
   name: {
@@ -16,9 +16,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
-  events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
-  books: [{ type: Schema.Types.ObjectId, ref: "Book" }],
+  tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
+  events: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  books: [{ type: Schema.Types.ObjectId, ref: 'Book' }],
 })
 
-module.exports = model("User", userSchema)
+module.exports = model('User', userSchema)
