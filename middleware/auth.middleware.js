@@ -11,7 +11,7 @@ const auth = (req, res, next) => {
 
         const token = bearer.split(' ')[1]
 
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
+        const decodedToken = jwt.verify(token, process.env.SECRET_JWT)
 
         req.user = {...decodedToken}
 
