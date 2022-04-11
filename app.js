@@ -15,7 +15,7 @@ app.use('/auth', require('./routes/auth.routes'))
 
 app.use(require('./middleware/auth.middleware'))
 
-
+app.use('/task', require('./routes/task.routes'))
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on ${process.env.PORT}`)
