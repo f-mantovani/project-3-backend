@@ -3,7 +3,7 @@ const { Router } = require('express')
 const User = require('../models/User.model')
 const Book = require('../models/Book.model')
 const { createBookReqPayload } = require('./book_functions/createBookReqPayload')
-const { verifyUserId } = require('./book_functions/verifyUserId.js')
+const { verifyUserId } = require('./helper_functions/verifyUserId.js')
 
 const router = Router()
 
