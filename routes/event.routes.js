@@ -116,7 +116,7 @@ router.delete('/deleteAll', async (req, res) => {
 
     res.status(500).json({place: 'Error trying to delete all events', error: error.message})
   }
-  
+
 })
 
 module.exports = router

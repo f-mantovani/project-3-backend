@@ -3,6 +3,7 @@ const { Router } = require('express')
 
 const Task = require('../models/Tasks.model.js')
 const User = require('../models/User.model.js')
+const verifyUserId = require('./helper_functions/verifyUserId.js')
 
 const router = Router()
 
@@ -71,7 +72,9 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
 
   try {
 
-    await Task.findOneAndDelete({ _id: taskId, user: userId })
+    const deleted = await Task.findOneAndDelete({ _id: taskId, user: userId })
+
+    verifyUserId(deleted, "You can't delete tasks created by another user")
 
     await User.findByIdAndUpdate(userId, { $pull: { tasks: taskId }})
 
@@ -91,7 +94,9 @@ router.delete('/deleteAll', async (req, res) => {
 
   try {
 
-    await Task.deleteMany({ user: userId })
+    const deleteMany = await Task.deleteMany({ user: userId })
+
+    verifyUserId(deleteMany, "You can't delete tasks created by another user")
 
     await User.findByIdAndUpdate(userId, { $unset: { tasks:"" }})
 

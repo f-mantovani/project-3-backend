@@ -1,5 +1,7 @@
-const createBookReqPayload = (req) => {
-  const info = {
+const getBookReq = (req) => {
+
+  const payload = {
+
     name: req.body.name,
 
     author: req.body.author,
@@ -7,9 +9,11 @@ const createBookReqPayload = (req) => {
     bookId: req.params.bookId,
 
     userId: req.user.userId,
+    
   }
 
-  return info
+  return payload
+
 }
 
-module.exports = { createBookReqPayload }
+module.exports = getBookReq 
