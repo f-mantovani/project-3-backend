@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { verifyCredentials } = require('../validations/verifyCredentials.js')
+const { verifyCredentials } = require('../routes/auth_functions/verifyCredentials')
 
 const auth = (req, res, next) => {
 

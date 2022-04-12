@@ -93,7 +93,7 @@ router.delete('/deleteOne/:eventId', async (req, res) => {
 
     await User.findByIdAndUpdate(userId, { $pull: { events: eventId } })
 
-    res.status(200).json()
+    res.status(204).json()
 
   } catch (error) {
     res.status(500).json({ place: 'Error trying delete a event', error: error.message })
@@ -110,7 +110,7 @@ router.delete('/deleteAll', async (req, res) => {
 
     await User.findByIdAndUpdate(userId, { $unset: { events: '' } })
 
-    res.status(200).json()
+    res.status(204).json()
 
   } catch (error) {
 
