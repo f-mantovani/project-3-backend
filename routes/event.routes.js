@@ -50,19 +50,21 @@ router.get('/', async (req, res) => {
 
 router.put('/:eventId', async (req, res) => {
 
-    const { userId } = req.user
-
-    const updatePayload = req.body
+    const { title , description, user, date } = createEventReqPayload(req)
 
     const { eventId } = req.params
 
-    const confirmIfEventIsPast = confirmEventStatus(updatePayload.date)
-
-    updatePayload.is_past = confirmIfEventIsPast
+    const confirmIfEventIsPast = confirmEventStatus(date)
 
     try {
 
-        const updatedEvent = await Event.findOneAndUpdate({_id: eventId, user: userId}, updatePayload, {new: true})
+        const updatedEvent = await Event.findOneAndUpdate({_id: eventId, user: user}, {
+            title, 
+            description,
+            user, 
+            date, 
+            is_past:confirmIfEventIsPast
+        }, {new: true})
 
         checkIfEventExists(updatedEvent)
        
