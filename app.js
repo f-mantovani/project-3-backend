@@ -19,6 +19,8 @@ app.use('/task', require('./routes/task.routes'))
 
 app.use('/book', require('./routes/book.routes'))
 
+app.use('/event', require('./routes/event.routes'))
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on ${process.env.PORT}`)
 })
