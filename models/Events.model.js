@@ -1,4 +1,4 @@
-const { Schema, models } = require('mogoose')
+const { Schema, model } = require('mongoose')
 
 const eventSchema = new Schema ({
     title: {
@@ -21,4 +21,4 @@ const eventSchema = new Schema ({
     }
 })
 
-module.exports = models('Event', eventSchema)
+module.exports = model('Event', eventSchema)
