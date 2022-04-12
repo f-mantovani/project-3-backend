@@ -8,13 +8,12 @@ const router = Router()
 
 //Create a Book
 router.post('/',async (req, res) => {
-
   const {name, author, userId} = getInfo(req)
 
   try {
 
     const newBook = await Book.create({ name, author, userId })
-
+  
     res.status(201).json(newBook)
 
   } catch (error) {
@@ -26,7 +25,6 @@ router.post('/',async (req, res) => {
 
 // Get all Books
 router.get('/', async (req, res) => {
-
   try {
     
     const allBooks = await Book.find()
@@ -41,7 +39,6 @@ router.get('/', async (req, res) => {
 
 // Get one BookById
 router.get('/:bookId', async (req, res) => {
-
   const { bookId } = getInfo(req)
 
   try {
@@ -56,32 +53,24 @@ router.get('/:bookId', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
-  const { name, author } = req.body
-  const { userId } = req.params
+// Delete one Book - I imagining if it's a good practice to put a validation for the delete routes
+// by userId
+router.delete('/delete/:bookId', async (req, res) => {
+  const { userId, bookId } = getInfo(req)
+  
   try {
-    
+    await Book.findOneAndDelete({ _id: bookId, userId })
+
+    await User.updateMany({ $pull: { books: bookId }})
+
+    res.status(204).json()
+
   } catch (error) {
-    
+
+    res.status(500).json({ place: "Error trying to delete one book", error: error.message })
+
   }
 })
-router.post('/', async (req, res) => {
-  const { name, author } = req.body
-  const { userId } = req.params
-  try {
-    
-  } catch (error) {
-    
-  }
-})
-router.post('/', async (req, res) => {
-  const { name, author } = req.body
-  const { userId } = req.params
-  try {
-    
-  } catch (error) {
-    
-  }
-})
+
 
 module.exports = router
