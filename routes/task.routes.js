@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
   try {
     const newTask = await Task.create({ title, user: userId })
     
-    const user = await User.findByIdAndUpdate(userId, { $push: { tasks: newTask._id }})
+    await User.findByIdAndUpdate(userId, { $push: { tasks: newTask._id }})
     
     res.status(201).json(newTask)
   
@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   const { userId } = req.user
   try {
+
     const allTasks = await Task.find({user: userId})
 
     res.status(200).json(allTasks)
@@ -58,9 +59,9 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
   const { taskId } = req.params
   try {
 
-    const deleted = await Task.findOneAndDelete({ _id: taskId, user: userId })
+    await Task.findOneAndDelete({ _id: taskId, user: userId })
 
-    const user = await User.findByIdAndUpdate(userId, { $pull: { taskId }})
+    await User.findByIdAndUpdate(userId, { $pull: { tasks: taskId }})
 
     res.status(204).json()
 
@@ -72,9 +73,10 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
 router.delete('/deleteAll', async (req, res) => {
   const { userId } = req.user
   try {
-    const deleteAll = await Task.deleteMany({ user: userId })
 
-    const user = await User.findByIdAndUpdate(userId, { $unset: { tasks:"" }})
+    await Task.deleteMany({ user: userId })
+
+    await User.findByIdAndUpdate(userId, { $unset: { tasks:"" }})
 
     res.status(204).json()
 
