@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json(error.message)
+    res.status(500).json({place: 'Error trying to create a event', error: error.message})
 
   }
 
@@ -48,7 +48,7 @@ router.get('/', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json(error.message)
+    res.status(500).json({place: 'Error trying to get events', error: error.message})
   }
 
 })
@@ -76,7 +76,7 @@ router.put('/:eventId', async (req, res) => {
 
   } catch (error) {
 
-    res.status(error.status || 500).json({ error: error.message })
+    res.status(error.status || 500).json({place: 'Error trying to update a event', error: error.message})
 
   }
 
@@ -114,7 +114,7 @@ router.delete('/deleteAll', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json(error.message)
+    res.status(500).json({place: 'Error trying to delete all events', error: error.message})
   }
   
 })
