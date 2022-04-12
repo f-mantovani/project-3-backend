@@ -8,7 +8,13 @@ const bookSchema = new Schema(
     author: {
       type: String
     },
-    userId: [{
+    // Add this ID to control book entry creator
+    userId: {
+      type: Schema.Types.ObjectId, 
+      ref:'User'
+    },
+    // Changed this name, but we could use another name
+    favoritedByUsers: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
     }]

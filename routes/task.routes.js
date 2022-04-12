@@ -9,9 +9,10 @@ const router = Router()
 router.post('/', async (req, res) => {
   
   const { title } = req.body
-
   const { userId } = req.user
+
   try {
+
     const newTask = await Task.create({ title, user: userId })
     
     await User.findByIdAndUpdate(userId, { $push: { tasks: newTask._id }})
@@ -21,11 +22,15 @@ router.post('/', async (req, res) => {
   } catch (error) {
     
     res.status(500).json({ place:"Error trying create new task", error: error.message })
+
   }
+
 })
 
 router.get('/', async (req, res) => {
+
   const { userId } = req.user
+
   try {
 
     const allTasks = await Task.find({user: userId})
@@ -35,16 +40,19 @@ router.get('/', async (req, res) => {
   } catch (error) {
 
     res.status(500).json({ place: "Error trying to get all tasks", error: error.message })
+
   }
+
 })
 
 router.put('/:taskId', async (req, res) => {
+
   const { userId } = req.user
-
   const { taskId } = req.params
-
   const { title } = req.body
+
   try {
+
     const updatedTask = await Task.findOneAndUpdate({ _id: taskId, user: userId }, { title }, { new: true})
 
     res.status(200).json(updatedTask)
@@ -56,9 +64,11 @@ router.put('/:taskId', async (req, res) => {
 })
 
 router.delete('/deleteOne/:taskId', async (req, res) => {
+
   const { userId } = req.user
 
   const { taskId } = req.params
+
   try {
 
     await Task.findOneAndDelete({ _id: taskId, user: userId })
@@ -68,12 +78,17 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
     res.status(204).json()
 
   } catch (error) {
+
     res.status(500).json({ place: "Error trying delete a task", error: error.message})
+
   }
+
 })
 
 router.delete('/deleteAll', async (req, res) => {
+
   const { userId } = req.user
+
   try {
 
     await Task.deleteMany({ user: userId })
@@ -85,7 +100,9 @@ router.delete('/deleteAll', async (req, res) => {
   } catch (error) {
 
     res.status(500).json({ place: "Error trying delete all tasks", error: error.message })
+
   }
+  
 })
 
 module.exports = router
