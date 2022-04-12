@@ -16,4 +16,4 @@ const verifyCredentials = (credential, status, message) => {
   
 }
 
-module.exports = { verifyCredentials }
+module.exports = verifyCredentials 
