@@ -1,4 +1,4 @@
-const createEventReqPayload = (req) => {
+const getEventReq = (req) => {
 
     const payload = {
 
@@ -10,11 +10,13 @@ const createEventReqPayload = (req) => {
 
         user: req.user.userId,
 
-        is_past: req.body.is_past
+        is_past: req.body.is_past,
+
+        eventId: req.params.eventId
 
     }
 
     return payload
 }
 
-module.exports = createEventReqPayload
+module.exports = getEventReq
