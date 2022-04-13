@@ -1,5 +1,5 @@
 const getUserReq = (req) => {
-    const info = {
+    const payload = {
 
       name: req.body.name,
   
@@ -9,7 +9,7 @@ const getUserReq = (req) => {
   
     }
   
-    return info
+    return payload
   }
 
 module.exports = getUserReq

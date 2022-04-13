@@ -10,13 +10,13 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const { name, email, profile_image } = await User.findById(userId)
+        const { name, email, profileImage } = await User.findById(userId)
 
-        res.status(200).json({name, email, profile_image})
+        res.status(200).json({name, email, profileImage})
 
     } catch (error) {
 
-        res.status(500).json({error: error.message})
+        res.status(500).json({place: 'Error trying to get the user information', error: error.message})
 
     }
 })

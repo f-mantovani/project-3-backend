@@ -16,7 +16,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  profile_image: {
+  profileImage: {
     type: String,
   },
   tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
