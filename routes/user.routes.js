@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const { name, email, profileImage, books } = await User.findById(userId)
+        const { name, email, profileImage } = await User.findById(userId)
 
         res.status(200).json({name, email, profileImage})
 
