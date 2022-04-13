@@ -4,13 +4,13 @@ const Event = require('../models/Events.model')
 const User = require('../models/User.model')
 const checkIfEventExists = require('../controllers/event_controllers/checkIfEventExists')
 const confirmEventStatus = require('../controllers/event_controllers/confirmEventStatus')
-const createEventReqPayload = require('../controllers/event_controllers/createEventReqPayload')
+const getEventReq = require('../controllers/event_controllers/getEventReq')
 
 const router = Router()
 
 router.post('/', async (req, res) => {
 
-  const { title, description, user, date } = createEventReqPayload(req)
+  const { title, description, user, date } = getEventReq(req)
 
   try {
 
@@ -38,11 +38,11 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
 
-  const { userId } = req.user
+  const { user } = getEventReq(req)
 
   try {
 
-    const allUserEvents = await Event.find({ user: userId })
+    const allUserEvents = await Event.find({ user: user })
 
     res.status(200).json(allUserEvents)
 
@@ -55,9 +55,7 @@ router.get('/', async (req, res) => {
 
 router.put('/:eventId', async (req, res) => {
 
-  const { title, description, user, date } = createEventReqPayload(req)
-
-  const { eventId } = req.params
+  const { title, description, user, date, eventId } = getEventReq(req)
 
   const confirmIfEventIsPast = confirmEventStatus(date)
 
@@ -84,14 +82,13 @@ router.put('/:eventId', async (req, res) => {
 
 router.delete('/deleteOne/:eventId', async (req, res) => {
 
-  const { userId } = req.user
-  const { eventId } = req.params
+  const { user, eventId } = getEventReq(req)
 
   try {
 
-    await Event.findByIdAndDelete({ _id: eventId, user: userId })
+    await Event.findByIdAndDelete({ _id: eventId, user: user })
 
-    await User.findByIdAndUpdate(userId, { $pull: { events: eventId } })
+    await User.findByIdAndUpdate(user, { $pull: { events: eventId } })
 
     res.status(204).json()
 
@@ -102,13 +99,13 @@ router.delete('/deleteOne/:eventId', async (req, res) => {
 
 router.delete('/deleteAll', async (req, res) => {
 
-  const { userId } = req.user
+  const { user } = getEventReq(req)
 
   try {
 
-    await Event.deleteMany({ user: userId })
+    await Event.deleteMany({ user: user })
 
-    await User.findByIdAndUpdate(userId, { $unset: { events: '' } })
+    await User.findByIdAndUpdate(user, { $unset: { events: '' } })
 
     res.status(204).json()
 
