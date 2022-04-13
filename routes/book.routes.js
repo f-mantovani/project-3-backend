@@ -2,8 +2,8 @@ const { Router } = require('express')
 
 const User = require('../models/User.model')
 const Book = require('../models/Book.model')
-const getBookReq = require('./book_functions/getBookReq')
-const verifyUserId = require('./helper_functions/verifyUserId.js')
+const getBookReq  = require('../controllers/book_controllers/getBookReq')
+const verifyUserId = require('../controllers/helper_controllers/verifyUserId.js')
 const uploadCloud = require('../config/cloudinary.config')
 
 const router = Router()

@@ -2,9 +2,9 @@ const { Router } = require('express')
 
 const Event = require('../models/Events.model')
 const User = require('../models/User.model')
-const checkIfEventExists = require('./event_functions/checkIfEventExists')
-const confirmEventStatus = require('./event_functions/confirmEventStatus')
-const createEventReqPayload = require('./event_functions/createEventReqPayload')
+const checkIfEventExists = require('../controllers/event_controllers/checkIfEventExists')
+const confirmEventStatus = require('../controllers/event_controllers/confirmEventStatus')
+const createEventReqPayload = require('../controllers/event_controllers/createEventReqPayload')
 
 const router = Router()
 

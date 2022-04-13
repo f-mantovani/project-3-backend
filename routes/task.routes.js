@@ -3,7 +3,7 @@ const { Router } = require('express')
 
 const Task = require('../models/Tasks.model.js')
 const User = require('../models/User.model.js')
-const verifyUserId = require('./helper_functions/verifyUserId.js')
+const verifyUserId = require('../controllers/helper_controllers/verifyUserId.js')
 
 const router = Router()
 

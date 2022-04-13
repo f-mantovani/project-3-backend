@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const { Router } = require('express')
-const validateUserInputs = require('./auth_functions/validateUserInputs.js')
-const verifyCredentials = require('./auth_functions/verifyCredentials')
+const validateUserInputs = require('../controllers/auth_controllers/validateUserInputs.js')
+const verifyCredentials = require('../controllers/auth_controllers/verifyCredentials')
 const User = require('../models/User.model.js')
-const getAuthReq = require('./auth_functions/getAuthReq.js')
+const getAuthReq = require('../controllers/auth_controllers/getAuthReq.js')
 
 const router = Router()
 
