@@ -1,11 +1,13 @@
-const getUserReq = (req) => {
+const getUserReq = ({body, user, file}) => {
     const payload = {
 
-      name: req.body.name,
+      name: body.name,
   
-      email: req.body.email,
+      email: body.email,
 
-      userId: req.user.userId
+      userId: user.userId,
+
+      path: file ? file.path : null
   
     }
   

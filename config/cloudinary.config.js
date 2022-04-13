@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: '',
+    folder: 'profileImages',
     resource_type:'image'
   }
 })

@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const User = require('../models/User.model')
 const getUserReq = require('./user_functions/getUserReq')
+const uploadCloud = require('../config/cloudinary.config')
 
 const router = Router()
 
@@ -10,9 +11,9 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const { name, email, profileImage } = await User.findById(userId)
+        const { name, email, profileImage, books } = await User.findById(userId)
 
-        res.status(200).json({name, email, profileImage})
+        res.status(200).json({name, email, profileImage, books})
 
     } catch (error) {
 
@@ -28,13 +29,30 @@ router.put('/', async (req, res) => {
 
     try {
 
-        const updatedUser = await User.findByIdAndUpdate(userId, {name, email}, {new: true}).select('id name email')
+        const updatedUser = await User.findByIdAndUpdate(userId, {name, email}, {new: true}).select('id name email profileImage')
 
         res.status(200).json(updatedUser)
 
     } catch (error) {
 
         res.status(error.status || 500).json({place: 'Error trying to update the user information', error: error.message})
+    }
+
+})
+
+router.put('/profile-image', uploadCloud.single('image'), async (req, res) => {
+
+    const { userId, path }  =  getUserReq(req)
+
+    try {
+
+        const updatedUser = await User.findByIdAndUpdate(userId, {profileImage: path}, {new: true}).select('id name email profileImage')
+
+        res.status(200).json(updatedUser)
+
+    } catch (error) {
+
+        res.status(500).json({place: 'Error uploading a profile picture', error: error.message})
     }
 
 })
