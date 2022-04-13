@@ -18,4 +18,4 @@ const validateUserInputs = (email, password, name) => {
 }
 
 
-module.exports = { validateUserInputs }
+module.exports = validateUserInputs

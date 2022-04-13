@@ -1,4 +1,5 @@
 const verifyUserId = (credential, message) => {
+
   if (!credential) {
     const error = new Error()
 
@@ -10,6 +11,7 @@ const verifyUserId = (credential, message) => {
   }
 
   return
+  
 }
 
-module.exports = { verifyUserId }
+module.exports = verifyUserId 
