@@ -42,8 +42,8 @@ http://localhost:<PORT>
 
 | Method | Endpoint     | Payload                                                 | Response                   | Action             |
 | ------ | ------------ | ------------------------------------------------------- | -------------------------- | ------------------ |
-| POST   | /auth/signup | { "email": string, "password": string, "name": string } | { user }            | Creates a new user |
-| POST   | /auth/login  | { "email": string, "name": string }                     | { token: name, email, id } | Login user         |
+| POST   | /auth/signup | { "email": string, <br/> "password": string,<br/> "name": string } | { user }            | Creates a new user |
+| POST   | /auth/login  | { "email": string, <br/>"name": string }                     | { token } | Login user         |
 
 ### PRIVATE ROUTES
 
@@ -52,7 +52,7 @@ http://localhost:<PORT>
 | Method | Endpoint            | Payload                             | Response                          | Action                    |
 | ------ | ------------------- | ----------------------------------- | --------------------------------- | ------------------------- |
 | GET    | /user               | \-                                  | { user}      | Get logged user           |
-| PUT    | /user               | { "name": string, "email": string } | { user } | Updated logged user       |
+| PUT    | /user               | { "name": string,<br/> "email": string } | { user } | Updated logged user       |
 | PUT    | /user/profile-image | { "image": image }                  | { user } | Updated logged user image |
 
 #### Books
@@ -61,7 +61,7 @@ http://localhost:<PORT>
 | ------ | ------------------- | ------------------------------------ | ----------- | ------------------- |
 | GET    | /book               | \-                                   | \[ books \] | Get all books       |
 | GET    | /book/:bookId       | \-                                   | { book }    | Get a book          |
-| POST   | /book               | { "name": string, "author": string } | { book }    | Creates a book      |
+| POST   | /book               | { "name": string, <br/>"author": string } | { book }    | Creates a book      |
 | PUT    | /book/image/:bookId | { "image": image }                   | { book }    | Update a book cover |
 | DELETE | /book/:bookId       | \-                                   | \-          | Deletes a book      |
 
@@ -80,7 +80,7 @@ http://localhost:<PORT>
 | Method | Endpoint                  | Payload                                                  | Response     | Action            |
 | ------ | ------------------------- | -------------------------------------------------------- | ------------ | ----------------- |
 | GET    | /event                    | \-                                                       | \[ events \] | Get all events    |
-| POST   | /event                    | { "title": string, "description": string, "date": date } | { event }    | Creates a event   |
-| PUT    | /event/:eventId           | { "title": string, "description": string, "date": date } | { event }    | Update a event    |
+| POST   | /event                    | { "title": string, <br/>"description": string,<br/> "date": date } | { event }    | Creates a event   |
+| PUT    | /event/:eventId           | { "title": string,<br/> "description": string,<br/> "date": date } | { event }    | Update a event    |
 | DELETE | /event/deleteOne/:eventId | \-                                                       | \-           | Deletes a event   |
 | DELETE | /event/deleteAll          | \-                                                       | \-           | Deletes all event |
