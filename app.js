@@ -17,6 +17,8 @@ app.use(require('./middleware/auth.middleware'))
 
 app.use('/task', require('./routes/task.routes'))
 
+app.use('/user', require('./routes/user.routes'))
+
 app.use('/book', require('./routes/book.routes'))
 
 app.use('/event', require('./routes/event.routes'))
