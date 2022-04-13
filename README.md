@@ -24,7 +24,7 @@ Front-end repository link:
 ```javascript
 PORT =                      //use the one you prefer
 MONGO_URI =                 //your local mongoDB or AtlasDB
-SECRET_JWT =                // your favorite secret way to encode 
+SECRET_JWT =                // your favorite way to encode the secret
 CLOUDINARY_NAME =           // your cloud name
 CLOUDINARY_KEY =            // your cloud key
 CLOUDINARY_SECRET =         // your cloud secret
