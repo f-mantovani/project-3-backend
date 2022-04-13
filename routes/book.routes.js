@@ -32,8 +32,7 @@ router.post('/', async (req, res) => {
 // Upload a Book Image
 router.put('/image/:bookId', uploadCloud.single('image') ,async (req, res) => {
 
-  const { bookId } = getBookReq(req)
-  const { path } = req.file
+  const { bookId, path } = getBookReq(req)
 
   try {
     

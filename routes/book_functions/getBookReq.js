@@ -1,14 +1,16 @@
-const getBookReq = (req) => {
+const getBookReq = ({ body, params, user, file}) => {
 
   const payload = {
 
-    name: req.body.name,
+    name: body.name,
 
-    author: req.body.author,
+    author: body.author,
 
-    bookId: req.params.bookId,
+    bookId: params.bookId,
 
-    userId: req.user.userId,
+    userId: user.userId,
+
+    path: file ? file.path : null
     
   }
 
