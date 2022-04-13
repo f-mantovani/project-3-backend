@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const User = require('../models/User.model')
-const getUserReq = require('./user_functions/getUserReq')
+const getUserReq = require('../controllers/user_controllers/getUserReq')
 const uploadCloud = require('../config/cloudinary.config')
 
 const router = Router()
