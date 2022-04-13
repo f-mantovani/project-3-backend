@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
         const { name, email, profileImage, books } = await User.findById(userId)
 
-        res.status(200).json({name, email, profileImage, books})
+        res.status(200).json({name, email, profileImage})
 
     } catch (error) {
 
