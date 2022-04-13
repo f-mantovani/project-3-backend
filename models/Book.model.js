@@ -10,9 +10,9 @@ const bookSchema = new Schema(
     },
     imageUrl: {
       type: String
-    }
+    },
     // Add this ID to control book entry creator
-    userId: {
+    createdByUser: {
       type: Schema.Types.ObjectId, 
       ref:'User'
     },
