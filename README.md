@@ -11,15 +11,15 @@ Front-end repository link:
 
 ## USAGE
 
-Online:
+- Online:
 
 -or-
 
-Local:
+- Local:
 
-- Clone this repo;
-- `npm i`;
-- Set your enviroment variables with
+  - Clone this repo;
+  - `npm i`;
+  - Set your enviroment variables with
 
 ```javascript
 PORT =                      //use the one you prefer
@@ -30,7 +30,7 @@ CLOUDINARY_KEY =            // your cloud key
 CLOUDINARY_SECRET =         // your cloud secret
 ```
 
-- User `npm start` (node) or `npm run dev` (nodemon) to start application at:
+- Use `npm start` (node) or `npm run dev` (nodemon) to start application at:
 
 ```
 http://localhost:<PORT>
