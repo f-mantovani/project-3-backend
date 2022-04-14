@@ -1,22 +1,23 @@
-const getEventReq = (req) => {
+const getEventReq = ({ body, user, params }) => {
 
     const payload = {
 
-        title: req.body.title,
+        title: body.title,
 
-        description: req.body.description,
+        description: body.description,
 
-        date: req.body.date,
+        date: body.date,
+        
+        is_past: body.is_past,
+        
+        user: user.userId,
 
-        user: req.user.userId,
-
-        is_past: req.body.is_past,
-
-        eventId: req.params.eventId
+        eventId: params.eventId
 
     }
 
     return payload
+    
 }
 
 module.exports = getEventReq
