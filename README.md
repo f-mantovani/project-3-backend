@@ -49,29 +49,32 @@ http://localhost:<PORT>
 
 #### User
 
-| Method | Endpoint            | Payload                             | Response                          | Action                    |
-| ------ | ------------------- | ----------------------------------- | --------------------------------- | ------------------------- |
-| GET    | /user               | \-                                  | { user}      | Get logged user           |
-| PUT    | /user               | { "name": string,<br/> "email": string } | { user } | Updated logged user       |
-| PUT    | /user/profile-image | { "image": image }                  | { user } | Updated logged user image |
+| Method | Endpoint            | Payload                             | Response | Action                    |
+| ------ | ------------------- | ----------------------------------- | -------- | ------------------------- |
+| GET    | /user               | \-                                  | { user}  | Gets logged user          |
+| PUT    | /user               | { “name”: string, <br/> “email”: string } | { user } | Updates logged user       |
+| * PUT    | /user/profile-image | { “image”: image }                  | { user } | Updates logged user image |
 
+ \* This is a Multipart form route that receives a image file with <u>image</u> as the field name
 #### Books
 
-| Method | Endpoint            | Payload                              | Response    | Action              |
-| ------ | ------------------- | ------------------------------------ | ----------- | ------------------- |
-| GET    | /book               | \-                                   | \[ books \] | Get all books       |
-| GET    | /book/:bookId       | \-                                   | { book }    | Get a book          |
-| POST   | /book               | { "name": string, <br/>"author": string } | { book }    | Creates a book      |
-| PUT    | /book/image/:bookId | { "image": image }                   | { book }    | Update a book cover |
-| DELETE | /book/:bookId       | \-                                   | \-          | Deletes a book      |
+| Method | Endpoint            | Payload                              | Response    | Action                       |
+| ------ | ------------------- | ------------------------------------ | ----------- | ---------------------------- |
+| GET    | /book               | \-                                   | \[ books \] | Gets all books               |
+| GET    | /book/:bookId       | \-                                   | { book }    | Gets a book                  |
+| GET    | /book/favorites     | \-                                   | \[ books\]  | Gets favorited books by user |
+| POST   | /book               | { "name": string, <br/> "author": string } | { book }    | Creates a book               |
+| * PUT    | /book/image/:bookId | { "image": image }                   | { book }    | Updates a book cover         |
+| DELETE | /book/:bookId       | \-                                   | \-          | Deletes a book               |
 
+\* This is a Multipart form route that receives a image file with <u>image</u> as the field name
 #### Tasks
 
 | Method | Endpoint                | Payload             | Response    | Action            |
 | ------ | ----------------------- | ------------------- | ----------- | ----------------- |
-| GET    | /task                   | \-                  | \[ tasks \] | Get all tasks     |
+| GET    | /task                   | \-                  | \[ tasks \] | Gets all tasks    |
 | POST   | /task                   | { "title": string } | { task }    | Creates a task    |
-| PUT    | /task/:taskId           | { "title": string } | { task }    | Update a task     |
+| PUT    | /task/:taskId           | { "title": string } | { task }    | Updates a task    |
 | DELETE | /task/deleteOne/:taskId | \-                  | \-          | Deletes a task    |
 | DELETE | /task/deleteAll         | \-                  | \-          | Deletes all tasks |
 
@@ -79,8 +82,8 @@ http://localhost:<PORT>
 
 | Method | Endpoint                  | Payload                                                  | Response     | Action            |
 | ------ | ------------------------- | -------------------------------------------------------- | ------------ | ----------------- |
-| GET    | /event                    | \-                                                       | \[ events \] | Get all events    |
-| POST   | /event                    | { "title": string, <br/>"description": string,<br/> "date": date } | { event }    | Creates a event   |
-| PUT    | /event/:eventId           | { "title": string,<br/> "description": string,<br/> "date": date } | { event }    | Update a event    |
+| GET    | /event                    | \-                                                       | \[ events \] | Gets all events   |
+| POST   | /event                    | { "title": string, <br/> "description": string, <br/> "date": date } | { event }    | Creates a event   |
+| PUT    | /event/:eventId           | { "title": string, <br/> "description": string, <br/> "date": date } | { event }    | Updates a event   |
 | DELETE | /event/deleteOne/:eventId | \-                                                       | \-           | Deletes a event   |
 | DELETE | /event/deleteAll          | \-                                                       | \-           | Deletes all event |
