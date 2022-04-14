@@ -86,7 +86,7 @@ router.delete('/deleteOne/:eventId', async (req, res) => {
 
   try {
 
-    await Event.findByIdAndDelete({ _id: eventId, user: user })
+    await Event.findOneAndDelete({ _id: eventId, user: user })
 
     await User.findByIdAndUpdate(user, { $pull: { events: eventId } })
 
