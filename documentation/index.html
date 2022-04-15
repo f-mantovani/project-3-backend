@@ -11,9 +11,11 @@
       crossorigin="anonymous"
     />
     <link href="nav.styling.css" rel="stylesheet"/>
+    
     <title>Plato API</title>
   </head>
   <body>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -24,23 +26,49 @@
             <ul class="list-unstyled components">
                 
                 <li>
-                    <a href="#story">Plato API</a>
+                    <a href="#story">About the API</a>
                 </li>
-               
+
                 <li>
-                    <a href="#auth">Authentication</a>
+                    <a href="#auth">API Authentication</a>
                 </li>
                 
-                <li>
-                    <a href="#auth">Authentication Routes</a>
-                </li>
             </ul>
+
+            <ul class="list-unstyled components">
+                <h4 class="mx-3">Routes</h4>
+                
+                <li>
+                    <a href="#auth-routes">Authentication</a>
+                </li>
+
+                <li>
+                    <a href="#user-routes">User</a>
+                </li>
+
+                <li>
+                    <a href="#book-routes">Book</a>
+                </li>
+
+                <li>
+                    <a href="#tasks-routes">Tasks</a>
+                </li>
+
+                <li>
+                    <a href="#events-routes">Event</a>
+                </li>
+                
+            </ul>
+
         </nav>
+        
 
         <!-- Page Content  -->
-        <main id="content">
+        <div id="content">
+
+            
             <section id="story">
-                <h2>Plato API</h2>
+                <h2>About the API</h2>
         
                 <p>
                   Plato is an application created for study management. Both developers
@@ -74,7 +102,7 @@
                 </p>
               </section>
 
-              <section id="auth">
+              <section id="auth-routes">
                 <h2>Authentication Routes</h2>
                 <p>These routes are intended to help users create an account and log into the platform. They are both public routes that do not demand a token to be used.</p>
                 <p>
@@ -286,8 +314,74 @@
                   </table>
               </section>
 
-           
-        </main>
+              <section id="events-routes">
+                <h2>Event Routes</h2>
+                <p>These routes are intended to help users create, organize and delete their events</p>
+                <p>
+                   <strong>Type:</strong> Private Route<br>
+                   <strong>Authentication:</strong> Token Required
+                </p>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                          <th scope="col">Method</th>
+                          <th scope="col">Endpoint</th>
+                          <th scope="col">Payload</th>
+                          <th scope="col">Response</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>GET</th>
+                          <td>/event</td>
+                          <td>-</td>
+                          <td>[events]</td>
+                          <td>Get all events</td>
+                        </tr>
+                        <tr>
+                            <td>POST</th>
+                            <td>/event</td>
+                            <td>{ "title": string,<br>
+                                "description": string,<br>
+                                "date": date }</td>
+                            <td>{ event }</td>
+                            <td>Creates a event</td>
+                          </tr>
+
+                          <tr>
+                            <td>PUT</th>
+                            <td>/event/:eventId</td>
+                            <td>{ "title": string,<br>
+                                "description": string,<br>
+                                "date": date }</td>
+                            <td>{ event }</td>
+                            <td>Update a event</td>
+                          </tr>
+
+                          <tr>
+                            <td>DELETE</th>
+                            <td>/event/deleteOne/:eventId</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>Deletes a event</td>
+                          </tr>
+
+                          <tr>
+                            <td>DELETE</th>
+                            <td>/event/deleteAll</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>Deletes all events</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </section>
+
+        </div>
+    </div>
+
 
 
     <script
@@ -295,5 +389,8 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+
+    <script src="animation.js" ></script>
+
   </body>
 </html>

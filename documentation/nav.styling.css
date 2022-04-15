@@ -24,6 +24,11 @@ a:focus {
     transition: all 0.3s;
 }
 
+nav {
+    position: fixed;
+    height: 100vh;
+}
+
 .navbar {
     padding: 15px 10px;
     background: #fff;
