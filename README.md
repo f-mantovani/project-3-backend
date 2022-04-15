@@ -17,7 +17,7 @@ Front-end repository link:
 
 - Local:
 
-  - Clone this repo;
+  - Clone this repo;https://plato-api.herokuapp.com/
   - `npm i`;
   - Set your enviroment variables with
 
