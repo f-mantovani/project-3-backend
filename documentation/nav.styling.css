@@ -64,8 +64,8 @@ nav {
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 200px;
+    max-width: 200px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
@@ -157,8 +157,10 @@ a.article:hover {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-    margin: 0 250px;
+    margin: 0 24px 0 200px;
 }
+
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES
@@ -173,5 +175,9 @@ a.article:hover {
     }
     #sidebarCollapse span {
         display: none;
+    }
+
+    #content {
+        margin: 0 auto;
     }
 }
