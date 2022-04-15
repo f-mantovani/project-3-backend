@@ -1,4 +1,4 @@
-const getBookReq = ({ body, params, user, file}) => {
+const getBookReq = ({ body, params, user, file }) => {
 
   const payload = {
 

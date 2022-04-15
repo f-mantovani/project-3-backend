@@ -3,14 +3,14 @@ const { Router } = require('express')
 
 const Task = require('../models/Tasks.model.js')
 const User = require('../models/User.model.js')
+const getTaskReq = require('../controllers/task_controllers/getTaskReq.js')
 const verifyUserId = require('../controllers/helper_controllers/verifyUserId.js')
 
 const router = Router()
 
 router.post('/', async (req, res) => {
   
-  const { title } = req.body
-  const { userId } = req.user
+  const { title, userId } = getTaskReq(req)
 
   try {
 
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   
   } catch (error) {
     
-    res.status(500).json({ place:"Error trying create new task", error: error.message })
+    res.status(error.status || 500).json({ place:"Error trying create new task", error: error.message })
 
   }
 
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
 
-  const { userId } = req.user
+  const { userId } = getTaskReq(req)
 
   try {
 
@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({ place: "Error trying to get all tasks", error: error.message })
+    res.status(error.status || 500).json({ place: "Error trying to get all tasks", error: error.message })
 
   }
 
@@ -48,9 +48,7 @@ router.get('/', async (req, res) => {
 
 router.put('/:taskId', async (req, res) => {
 
-  const { userId } = req.user
-  const { taskId } = req.params
-  const { title } = req.body
+  const { userId, taskId, title } = getTaskReq(req)
 
   try {
 
@@ -60,15 +58,15 @@ router.put('/:taskId', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({ place: "Error trying to update a task", error: error.message })
+    res.status(error.status || 500).json({ place: "Error trying to update a task", error: error.message })
+
   }
+
 })
 
 router.delete('/deleteOne/:taskId', async (req, res) => {
 
-  const { userId } = req.user
-
-  const { taskId } = req.params
+  const { userId, taskId } = getTaskReq(req)
 
   try {
 
@@ -82,7 +80,7 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({ place: "Error trying delete a task", error: error.message})
+    res.status(error.status || 500).json({ place: "Error trying delete a task", error: error.message })
 
   }
 
@@ -90,7 +88,7 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
 
 router.delete('/deleteAll', async (req, res) => {
 
-  const { userId } = req.user
+  const { userId } = getTaskReq(req)
 
   try {
 
@@ -104,7 +102,7 @@ router.delete('/deleteAll', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({ place: "Error trying delete all tasks", error: error.message })
+    res.status(error.status || 500).json({ place: "Error trying delete all tasks", error: error.message })
 
   }
   

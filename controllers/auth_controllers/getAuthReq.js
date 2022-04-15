@@ -1,12 +1,12 @@
-const getAuthReq = (req) => {
+const getAuthReq = ({ body }) => {
 
   const payload = {
 
-    name: req.body.name,
+    name: body.name,
 
-    email: req.body.email,
+    email: body.email,
 
-    password: req.body.password
+    password: body.password
     
   }
 

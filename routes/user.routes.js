@@ -17,9 +17,10 @@ router.get('/', async (req, res) => {
 
     } catch (error) {
 
-        res.status(500).json({place: 'Error trying to get the user information', error: error.message})
+        res.status(error.status || 500).json({ place: 'Error trying to get the user information', error: error.message })
 
     }
+
 })
 
 
@@ -29,13 +30,13 @@ router.put('/', async (req, res) => {
 
     try {
 
-        const updatedUser = await User.findByIdAndUpdate(userId, {name, email}, {new: true}).select('id name email profileImage')
+        const updatedUser = await User.findByIdAndUpdate(userId, { name, email }, { new: true }).select('id name email profileImage')
 
         res.status(200).json(updatedUser)
 
     } catch (error) {
 
-        res.status(error.status || 500).json({place: 'Error trying to update the user information', error: error.message})
+        res.status(error.status || 500).json({ place: 'Error trying to update the user information', error: error.message })
     }
 
 })
@@ -46,13 +47,13 @@ router.put('/profile-image', uploadCloud.single('image'), async (req, res) => {
 
     try {
 
-        const updatedUser = await User.findByIdAndUpdate(userId, {profileImage: path}, {new: true}).select('id name email profileImage')
+        const updatedUser = await User.findByIdAndUpdate(userId, { profileImage: path }, { new: true }).select('id name email profileImage')
 
         res.status(200).json(updatedUser)
 
     } catch (error) {
 
-        res.status(500).json({place: 'Error uploading a profile picture', error: error.message})
+        res.status(error.status || 500).json({ place: 'Error uploading a profile picture', error: error.message })
     }
 
 })

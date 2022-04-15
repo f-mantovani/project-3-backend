@@ -11,13 +11,13 @@ Front-end repository link:
 
 ## USAGE
 
-- Online:
+- Online: [Plato Api](https://plato-api.herokuapp.com/)
 
 -or-
 
 - Local:
 
-  - Clone this repo;
+  - Clone this repo;https://plato-api.herokuapp.com/
   - `npm i`;
   - Set your enviroment variables with
 

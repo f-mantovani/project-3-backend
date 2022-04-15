@@ -1,4 +1,5 @@
-const getUserReq = ({body, user, file}) => {
+const getUserReq = ({ body, user, file }) => {
+
     const payload = {
 
       name: body.name,
@@ -12,6 +13,7 @@ const getUserReq = ({body, user, file}) => {
     }
   
     return payload
+    
   }
 
 module.exports = getUserReq
