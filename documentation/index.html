@@ -226,8 +226,8 @@
               </section>
 
               <section id="tasks-routes">
-                <h2>Book Routes</h2>
-                <p>These routes are intended to help users find, favorite or create books to add to their future readings.</p>
+                <h2>Tasks Routes</h2>
+                <p>These routes are intended to help users create, organize and delete their tasks</p>
                 <p>
                    <strong>Type:</strong> Private Route<br>
                    <strong>Authentication:</strong> Token Required
@@ -246,42 +246,41 @@
                       <tbody>
                         <tr>
                           <td>GET</th>
-                          <td>/book</td>
+                          <td>/task</td>
                           <td>-</td>
-                          <td>[books]</td>
-                          <td>Get all books</td>
+                          <td>[tasks]</td>
+                          <td>Get all tasks</td>
                         </tr>
                         <tr>
-                            <td>GET</th>
-                            <td>/book/:bookId</td>
-                            <td>-</td>
-                            <td>{ book }</td>
-                            <td>Updated logged user</td>
-                          </tr>
-
-                          <tr>
                             <td>POST</th>
-                            <td>/book</td>
-                            <td>{ "name": string,<br>
-                                "author": string }</td>
-                            <td>{ book }</td>
-                            <td>Creates a book</td>
+                            <td>/task</td>
+                            <td>{ "title": string }</td>
+                            <td>{ task }</td>
+                            <td>Creates a task</td>
                           </tr>
 
                           <tr>
                             <td>PUT</th>
-                            <td>/book/image/:bookId</td>
-                            <td>{ "image": image }</td>
-                            <td>{ book }</td>
-                            <td>Update a book cover</td>
+                            <td>/task/:taskId</td>
+                            <td>{ "title": string }</td>
+                            <td>{ task }</td>
+                            <td>Update a task</td>
                           </tr>
 
                           <tr>
                             <td>DELETE</th>
-                            <td>/book/:bookId</td>
+                            <td>/task/deleteOne/:taskId</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>Deletes a book</td>
+                            <td>Deletes a task</td>
+                          </tr>
+
+                          <tr>
+                            <td>DELETE</th>
+                            <td>/task/deleteAll</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>Deletes all tasks</td>
                           </tr>
                       </tbody>
                   </table>
