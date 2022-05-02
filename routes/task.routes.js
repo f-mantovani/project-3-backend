@@ -48,11 +48,11 @@ router.get('/', async (req, res) => {
 
 router.put('/:taskId', async (req, res) => {
 
-  const { userId, taskId, title } = getTaskReq(req)
+  const { userId, taskId, title, status } = getTaskReq(req)
 
   try {
 
-    const updatedTask = await Task.findOneAndUpdate({ _id: taskId, user: userId }, { title }, { new: true})
+    const updatedTask = await Task.findOneAndUpdate({ _id: taskId, user: userId }, { title, status }, { new: true})
 
     res.status(200).json(updatedTask)
 

@@ -4,6 +4,8 @@ const getTaskReq = ({ body, user, params }) => {
 
         title: body.title,
 
+        status: body.status,
+
         userId: user.userId,
 
         taskId: params.taskId
