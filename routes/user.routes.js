@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const { name, email, profileImage } = await User.findById(userId)
+        const user = await User.findById(userId).select('-passwordHash').populate('tasks books events')
 
-        res.status(200).json({name, email, profileImage})
+        res.status(200).json(user)
 
     } catch (error) {
 

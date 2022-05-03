@@ -88,11 +88,11 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
 
 router.delete('/deleteAll', async (req, res) => {
 
-  const { userId } = getTaskReq(req)
+  const { userId, status } = getTaskReq(req)
 
   try {
 
-    const deleteMany = await Task.deleteMany({ user: userId })
+    const deleteMany = await Task.deleteMany({ user: userId, status: status })
 
     verifyUserId(deleteMany, "You can't delete tasks created by another user")
 
