@@ -5,6 +5,7 @@ const Task = require('../models/Tasks.model.js')
 const User = require('../models/User.model.js')
 const getTaskReq = require('../controllers/task_controllers/getTaskReq.js')
 const verifyUserId = require('../controllers/helper_controllers/verifyUserId.js')
+const filterUserTasks = require('../controllers/task_controllers/filterUserTasks.js')
 
 const router = Router()
 
@@ -96,7 +97,9 @@ router.delete('/deleteAll', async (req, res) => {
 
     verifyUserId(deleteMany, "You can't delete tasks created by another user")
 
-    await User.findByIdAndUpdate(userId, { $unset: { tasks:"" }})
+    const user = await User.findById(userId).select('-passwordHash').populate('tasks')
+
+    const userUpdated = await User.findByIdAndUpdate(userId, {tasks: filterUserTasks(user, status)}, {new: true}).select('-passwordHash').populate('tasks')
 
     res.status(204).json()
 
