@@ -8,7 +8,7 @@ const getTaskReq = ({ body, user, params }) => {
         
         taskId: params.taskId,
 
-        status: params.status,
+        status: params.status || body.status,
         
     }
 
