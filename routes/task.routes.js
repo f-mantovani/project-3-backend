@@ -87,7 +87,7 @@ router.delete('/deleteOne/:taskId', async (req, res) => {
 
 })
 
-router.delete('/deleteAll', async (req, res) => {
+router.delete('/deleteAll/:status', async (req, res) => {
 
   const { userId, status } = getTaskReq(req)
 
