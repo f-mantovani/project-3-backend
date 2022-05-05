@@ -11,7 +11,7 @@ const router = Router()
 
 router.post('/', async (req, res) => {
 
-  const { title, description, user, date } = getEventReq(req)
+  const { title, user, date, details, local } = getEventReq(req)
 
   try {
 
@@ -19,7 +19,8 @@ router.post('/', async (req, res) => {
 
     const newEvent = await Event.create({
       title,
-      description,
+      details,
+      local,
       user,
       date,
       is_past,

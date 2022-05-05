@@ -4,7 +4,9 @@ const getEventReq = ({ body, user, params }) => {
 
         title: body.title,
 
-        description: body.description,
+        local: body.local,
+
+        details: body.details,
 
         date: body.date,
         

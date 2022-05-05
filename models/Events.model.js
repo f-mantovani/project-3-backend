@@ -5,12 +5,15 @@ const eventSchema = new Schema ({
         type: String,
         required: true
     },
-    description: {
-        type: String
-    },
     date: {
         type: Date,
         required: true
+    },
+    local: {
+        type: String
+    },
+    details: {
+        type: String
     },
     user: {
         type: Schema.Types.ObjectId,
