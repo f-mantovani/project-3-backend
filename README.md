@@ -2,7 +2,9 @@
 
 Solution to Ironhack final project
 
-Front-end repository link:
+Front-end repository link: (https://github.com/F-Mantovani/project-3-client)
+
+Fron-End deploy: (https://brilliant-pithivier-991910.netlify.app/)
 
 ## TECHNOLOGIES
 
@@ -17,7 +19,7 @@ Front-end repository link:
 
 - Local:
 
-  - Clone this repo;https://plato-api.herokuapp.com/
+  - Clone this repo: https://plato-api.herokuapp.com/
   - `npm i`;
   - Set your enviroment variables with
 
