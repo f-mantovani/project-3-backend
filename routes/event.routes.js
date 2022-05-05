@@ -58,14 +58,15 @@ router.get('/', async (req, res) => {
 
 router.put('/:eventId', async (req, res) => {
 
-  const { title, description, user, date, eventId } = getEventReq(req)
+  const { title, user, date, details, local, eventId } = getEventReq(req)
 
   const confirmIfEventIsPast = confirmEventStatus(date)
 
   try {
     const updatedEvent = await Event.findOneAndUpdate({ _id: eventId, user: user }, {
         title,
-        description,
+        details,
+        local,
         user,
         date,
         is_past: confirmIfEventIsPast,
