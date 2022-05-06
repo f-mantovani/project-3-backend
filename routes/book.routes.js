@@ -12,11 +12,11 @@ const router = Router()
 //Create a Book
 router.post('/', async (req, res) => {
 
-  const { name, author, userId } = getBookReq(req)
+  const { name, author, year, sinopsis, imageUrl, userId } = getBookReq(req)
 
   try {
   
-    const newBook = await Book.create({ name, author, createdByUser: userId, favoritedByUsers: userId })
+    const newBook = await Book.create({ name, author, year, sinopsis, imageUrl, createdByUser: userId, favoritedByUsers: userId })
 
     await User.findByIdAndUpdate(userId, { $push: { books: newBook._id }})
 
