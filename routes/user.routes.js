@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
     try {
 
-        const user = await User.findById(userId).select('-passwordHash').populate('tasks books events')
+        const user = await User.findById(userId).select('-passwordHash').populate('tasks books events booksReading booksToRead booksDone')
 
         res.status(200).json(user)
 
