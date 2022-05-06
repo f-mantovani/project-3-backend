@@ -65,7 +65,7 @@ router.put('/book/:bookId', async (req, res) => {
 
     try {
         
-        const user = await User.findById(userId).select('-passwordHash')
+        const user = await User.findById(userId).select('-passwordHash').populate('booksReading booksToRead booksDone')
 
         changeBookshelves(user, bookId, status, oldStatus)
 
