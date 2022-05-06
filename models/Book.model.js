@@ -8,6 +8,12 @@ const bookSchema = new Schema(
     author: {
       type: String
     },
+    year: {
+      type: String
+    },
+    sinopsis: {
+      type: String
+    },
     imageUrl: {
       type: String
     },

@@ -1,4 +1,4 @@
-const getUserReq = ({ body, user, file }) => {
+const getUserReq = ({ body, user, file, params }) => {
 
     const payload = {
 
@@ -6,7 +6,13 @@ const getUserReq = ({ body, user, file }) => {
   
       email: body.email,
 
+      status: body.status,
+
+      oldStatus: body.oldStatus,
+
       userId: user.userId,
+
+      bookId: params.bookId,
 
       path: file ? file.path : null
   
