@@ -5,6 +5,7 @@ const Book = require('../models/Book.model')
 const getBookReq  = require('../controllers/book_controllers/getBookReq')
 const verifyUserId = require('../controllers/helper_controllers/verifyUserId.js')
 const uploadCloud = require('../config/cloudinary.config')
+const bookSearch = require('../controllers/book_controllers/bookSearch')
 
 const router = Router()
 
@@ -23,7 +24,7 @@ router.post('/', async (req, res) => {
 
   } catch (error) {
     
-    res.status(500).json({ place: 'Error trying to create a new book', error: error.message })
+    res.status(error.status || 500).json({ place: 'Error trying to create a new book', error: error.message })
 
   }
 
@@ -59,7 +60,28 @@ router.get('/', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({ place: 'Error trying to get all books', error: error.message })
+    res.status(error.status || 500).json({ place: 'Error trying to get all books', error: error.message })
+
+  }
+
+})
+
+// Get one book by search name
+router.get('/search', async (req, res) => {
+
+  const { search } = getBookReq(req)
+
+  try {
+
+    const booksList = await Book.find()
+
+    const searched = bookSearch(booksList, search)
+
+    res.status(200).json(searched)
+    
+  } catch (error) {
+
+    res.status(error.status || 500).json({ place: 'Error trying to search', error: error.message })
 
   }
 
@@ -97,7 +119,7 @@ router.get('/:bookId', async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({ place: 'Error trying to get one book', error: error.message })
+    res.status(error.status || 500).json({ place: 'Error trying to get one book', error: error.message })
 
   }
 
