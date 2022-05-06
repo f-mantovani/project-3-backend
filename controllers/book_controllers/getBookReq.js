@@ -10,6 +10,8 @@ const getBookReq = ({ body, params, user, file }) => {
 
     sinopsis: body.sinopsis,
 
+    imageUrl: body.imageUrl,
+
     search: params.search,
 
     bookId: params.bookId,
