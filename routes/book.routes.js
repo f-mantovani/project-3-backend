@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
 })
 
 // Get one book by search name
-router.get('/search', async (req, res) => {
+router.get('/:search', async (req, res) => {
 
   const { search } = getBookReq(req)
 

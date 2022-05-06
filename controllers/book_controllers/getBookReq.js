@@ -6,7 +6,7 @@ const getBookReq = ({ body, params, user, file }) => {
 
     author: body.author,
 
-    search: body.search,
+    search: params.search,
 
     bookId: params.bookId,
 
