@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   
     const newBook = await Book.create({ name, author, year, sinopsis, imageUrl, createdByUser: userId, favoritedByUsers: userId })
 
-    await User.findByIdAndUpdate(userId, { $push: { books: newBook._id }})
+    await User.findByIdAndUpdate(userId, { $push: { booksToRead: newBook._id, books: newBook._id  }})
 
     res.status(201).json(newBook)
 
