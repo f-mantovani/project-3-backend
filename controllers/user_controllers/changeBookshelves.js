@@ -1,8 +1,10 @@
 const changeBookshelves = (user, bookId, status, oldStatus ) => {
   const userMinusOld = user[oldStatus].filter((book) => book.toString() !== bookId)
   user[oldStatus] = userMinusOld
-  user[status].push(bookId)
-  console.log(user)
+  const verifyBook = user[status].map((book) => book._id.toString()).indexOf(bookId)
+  if (verifyBook === -1) {
+    user[status].push(bookId)
+  }
   return user
 }
 
