@@ -4,7 +4,7 @@ Solution to Ironhack final project
 
 Front-end repository link: https://github.com/F-Mantovani/project-3-client
 
-Fron-End deploy: https://brilliant-pithivier-991910.netlify.app/
+Fron-End deploy: https://plato-planner.netlify.app/
 
 ## TECHNOLOGIES
 
