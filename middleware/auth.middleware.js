@@ -21,7 +21,7 @@ const auth = (req, res, next) => {
     } catch (error) {
      
         if (error.message === 'jwt expired') {
-            res.status(401).json(error.message)
+           return  res.status(401).json(error.message)
         }
 
         res.status(error.status || 500).json(error.message)
