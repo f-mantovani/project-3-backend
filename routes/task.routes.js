@@ -1,6 +1,5 @@
 const { Router } = require('express')
 
-
 const Task = require('../models/Tasks.model.js')
 const User = require('../models/User.model.js')
 const getTaskReq = require('../controllers/task_controllers/getTaskReq.js')
