@@ -24,6 +24,13 @@ router.get('/', async (req, res) => {
 
 })
 
+router.get('/verify', async (req, res) => {
+    if (req.user) {
+       return  res.status(200).json(req.user)
+    }
+    res.status(500).json("User doesn't have a valid token")
+})
+
 
 router.put('/', async (req, res) => {
 

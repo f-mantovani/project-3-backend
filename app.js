@@ -17,6 +17,8 @@ app.use('/', require('./routes/documentation.routes'))
 
 app.use('/auth', require('./routes/auth.routes'))
 
+app.use('/keep-alive', require('./routes/keep-alive.routes'))
+
 app.use(require('./middleware/auth.middleware'))
 
 app.use('/task', require('./routes/task.routes'))
