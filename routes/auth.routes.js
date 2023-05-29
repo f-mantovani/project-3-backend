@@ -39,7 +39,7 @@ router.post('/signup', async (req, res) => {
     res.status(201).json(userCreated)
     
   } catch (error) {
-    
+
     res.status(error.status || 500).json({ place: "Error on signup", error: error.message })
 
   }
@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
     verifyCredentials(!userFromDB, 401, "Email or password incorrect")
 
     const comparePassword = await bcrypt.compare(password, userFromDB.passwordHash)
-
+    
     verifyCredentials(!comparePassword, 401, "Email or password incorrect")
 
     const payload = { email, name: userFromDB.name, userId: userFromDB._id}
@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
     res.status(200).json({ token })
 
   } catch (error) {
-    
+
     res.status(error.status || 500).json({ place: "Error on login", error: error.message})
 
   }

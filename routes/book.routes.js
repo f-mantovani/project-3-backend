@@ -111,8 +111,6 @@ router.get('/bookOne/:bookId', async (req, res) => {
 
   const { bookId } = getBookReq(req)
 
-  console.log(bookId)
-
   try {
 
     const findBook = await Book.findById(bookId)
